@@ -1,0 +1,1178 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="21点算法, 三叶雨">
+    <meta name="description" content="
+21点(blackjack)算法［转］ – Beat the dealer 来源： 顾斌梦追い虫的日志 
+
+21点的优选算法，据说把输牌的概率降低到了0.5%，研究一下。 首先学的是二十一点的规则,我们可以看出，二十一点的结果很大程度上依">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>21点算法 | 三叶雨</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="nav-transparent bg-color">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                </a>
+                <span class="logo-span">
+                    <a href="/">
+                        <p>三叶雨</p>
+                    </a>
+                </span>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-bars fa-xs"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-briefcase"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav" style="opacity:1 !important;">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">三叶雨</div>
+        <div class="logo-desc" id="binft">
+            
+            
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-briefcase"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/huangjianghua" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+    /*添加彩色滚动变换字体*/
+    <div> </div>
+    <script type="text/javascript" src="/js/textcolorhjh.js"></script>
+    
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/huangjianghua" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/sf/sf.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        21点算法
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/算法/" class="post-category" target="_blank">
+                                算法
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-04-08
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        7.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        26 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>21点(blackjack)算法［转］ – Beat the dealer 来源： 顾斌梦追い虫的日志 </p>
+</blockquote>
+<p><em>21点的优选算法，据说把输牌的概率降低到了0.5%，研究一下。 首先学的是二十一点的规则,我们可以看出，二十一点的结果很大程度上依赖于玩家的选择。象轮盘赌、百家乐那种游戏，玩家压上钱后，就只 好祈祷上帝，期盼好运降临，然后咣当一声，一拍两散，是死是活，当场就见分晓。二十一点、牌九等游戏则不同，在发下牌后，玩家可以在一定程度上控制自己的 最终结果，因此如果应对得当，可以使自己的损失减到最小。这就是所谓“基本策略（Basic Strategy）”。</em> </p>
+<hr>
+<h4 id="二十一点规则"><a href="#二十一点规则" class="headerlink" title="二十一点规则"></a>二十一点规则</h4><p>1.游戏由玩家和庄家（即赌场的发牌员）对玩，看谁的牌面点数更靠近21点。但如果超过了21点，则称为“爆掉”，算输。其中花牌（J，Q，K）都算10点，A可以算1点，也可以算11点，看哪种情况更有利。玩家之间不做比较。<br>2.游戏开始时，所有玩家和庄家各拿两张牌，一般来说，是玩家两张牌牌面朝上，庄家一张牌面朝上，一张牌面朝下。<br>3.两张牌的点数，肯定介于2到21点之间。21点只可能是一张10（包括J，Q，K，下同）和一张A，这叫“天成（BlackJack，以下简称BJ）”，除非庄家也拿到了BJ，不然赢一倍半的赌注。<br>4.玩家在游戏中有如下选择：<br>（1）要牌，直到他（或她，下同）认为自己的牌面离21点足够近了。比如手头的牌是4和5，加起来才9点，那么无论再加张什么牌，都不会爆掉，当然应该要牌。<br>（2）停牌，即不再要牌，比如手头是张10和9，已经很接近21点了，就不用再要牌了。<br>（3）加倍，即加一倍赌注，再要且仅要一张牌。比如手头是张4和7，这时要牌是肯定安全的，而且很可能拿到10或者其他点数较大的牌，一张就够了，值得加倍。这只能在刚拿到两张牌时使用，要过牌后就不能加倍。<br>（4）分牌，即拿到两张点数相同的牌时，可以加一份赌注，把牌分为两份，比如手头是两张8，加起来是16，非常糟糕的点数，这时就应该把牌分为两个8，再要两张牌来，很可能拿到10形成18点，就把坏牌变成好牌了。<br>（5）保险，即在庄家亮着的牌是A时，由于他拿到BJ的几率很大，玩家可以下赌注一半的保险。如果庄家没有拿到BJ，保险金就输掉了，如果庄家拿到了BJ，付给 玩家两倍保险金。很多玩家在自己拿到BJ的情况下，会下赌注一半的保险，以保证自己能赢回一倍赌注，因为如果庄家没有BJ，那他能赢赌注的一倍半，去掉输 掉的半倍保险，还赢一倍赌注；如果庄家有BJ，那他们牌面打平，但保险能赚回一倍赌注。<br>（6）投降，这时只输一半赌注。如果自己的牌是10和6，庄家亮着的牌是A，那还是趁早投降好。<br>5.庄家在手头的牌是A时，会问大家是否要保险，然后检查自己的牌是否BJ。如果手头的牌是10，也会检查是否BJ，但这时玩家就不能买保险了。<br>6.如果玩家要牌爆掉，算输，庄家当场收掉他的赌注。<br>7.当所有的玩家都做出选择后，庄家的玩法是固定的：亮出底牌，如果点数不到17点，则必须要牌，直到超过了16点或爆掉为止。<br>8.如果双方都还没有爆掉，则更接近21点的那个胜，如果双方点数相同，则算打平。 </p>
+<hr>
+<p>在这些基本规则之上，各地的赌场还会有些变动，比如有的赌场在软17点（A算11点时的点数称为“软”，比如A和6，就是软17点）时停下，有的则 必须继续要；有的赌场连续分牌最多只能有四次，有的可以无限分下去；有的A分牌只能一次；有的赌场分牌后不许加倍；有的赌场不许投降；等等等等。 </p>
+<p>还有些变种的二十一点游戏，比如“双亮（Double Exposure）二十一点”，就是庄家的两张底牌都亮着，但如果双方点数相同，算庄家赢。又如带大小鬼（Joker）的二十一点，庄家拿到鬼牌得扔掉， 玩家拿到鬼牌却可以指定它的点数，比如凑成11点，或者当A用等等。 </p>
+<p>“基本策略”的内容可见附二，没有任何神秘之处，任何一个懂概率论和计算机语言的人都可以写个程序，把它推导模拟出来。如前所言，背会它的难度在元素周期表之上，政治课教条之下。掌握了基本策略，可在典型规则下把庄家优势减到0.5％。 有了基本策略，我再到大西洋城去试手时，就从游击战升级到阵地战，不再玩一把就跑，而是坐下来和庄家周旋到底。一开 始我还有些紧张，使出大学里对付政治考试的必备招数：把基本策略表塞在裤袋里，玩不了几手就借口上厕所，掏出表来仔细对照一番。——后来我在赌场看见一个 老太太，堂而皇之地把基本策略表放在手边，发牌后就拿手指颤巍巍地在表上游走，找到对应的那一格，然后抬头转告发牌员。</p>
+<p>赌场的工作人员或熟视无睹，或和她 开些无伤大雅的玩笑。其他人有不确定的地方也问老太太，老太太这时就特自豪地查找一番，然后摆出副权威的样子说：“你该要牌！”我才恍然自己当初太做贼心 虚了。 当然，我们大学里也有些监考老师对在政治考试里的作弊睁一只眼闭一只眼，但赌场允许人们用基本策略，并不是同样地出于天良未泯，而是精确地计算出了，就算你用基本策略玩，优势仍然在庄家那边。 不过对于庄家这0.5％的优势，我也实在没什么要抱怨的了。</p>
+<p>假设一小时玩一百手，每手压十块钱，平均下来，一小时也 就输五块钱——坐在富丽堂皇的赌场里，享受着工作人员笑容可掬的服务、穿着高叉低胸的女侍们提供的免费酒水，以及赌博带来的精神刺激，每小时才付五块钱， 难道不是很合算的买卖吗？一场两小时的电影还要十块钱呢，有几部电影能象赌博那么刺激？ 更妙的是，感谢众多“萝卜”的存在，赌场认为平均每个顾客在二十一点上会输得远多于0.5％，于是会返回一定的“谢 礼（Comp，Complimentary的简称）”给顾客，比如餐券、戏票、旅馆房间等。我经常玩了四个小时下来，只输了二十块钱，但赌场会按照你输两 百块钱的标准来给你谢礼，比如一张价值十元的餐券。那就相当于我只花十块钱，就在赌场里玩了半天。 而且基本策略也可以用来挣钱，那就是赚网络赌场的红利。</p>
+<p>网络赌场的成本远低于现实赌场，他们不需要起豪华高楼，不需 要买设备器具，不需要雇人，也不需要白送酒水，因此一进入网络时代，网络赌场就如雨后春笋般，争先恐后地冒出在广阔无垠的网络沃土。为了竞争客源，每家网 络赌场都会推出五花八门的优惠，其中最普及的一种是，新会员加入时，可以得到一笔红利作为奖励。数额因赌场而异，一般在50到200美元之间。 当然，这笔钱不会让你白白拿到，赌场规定，要在他们那里累计下注到一定数目，比如二十倍，才可以把那笔红利提出来。 他们的如意算盘是，一般赌客每把平均会输5％，累计下二十倍的注，也就把白送的红利已经输回来了。</p>
+<p>这相当于用玩家自己的钱把他们吸引过来成为顾客。反正他 们的成本不过是一台服务器、一套软件、一点带宽，最适合薄利多销。 显然，一个懂基本策略的人马上就会发现其中的漏洞：如果运用基本策略玩二十一点，只输0.5％，赌二十倍下来，才输 10％，那就能白赚到90％的红利。——当然这么做的人只是少数，网络赌场的大多数顾客还是萝卜，使赌场仍然大赚特赚，乐此不疲地推出各种红利来，让我们 这些“获利玩家（Advantage Player）”能一家家赌场挨个揩油。 </p>
+<p>赌场对我们自然也有防范措施，比如常规定红利不准取出，只能在赌场里赌掉。这种红利，在网络赌徒圈里有个浑名，叫 “粘利（Sticky）”。不过人民群众自然也有对付它的办法：把剩下的红利拿到轮盘上去赌一把，输了就算了，赢了的话把多出的那部分取出，剩下的再拿去 赌，这样能拿回的期望值是： a + a^2 + a^3 + …… ＝ a/(1-a) 其中a为每把赢的概率，是一个略小于1/2的常数，那么上式也就趋向于略小于1。 </p>
+<p>另一个有趣的规定是：一般人只要累计下注二十倍就可以取出红利了，但来自中国大陆的玩家则需要累计下到二百倍。看来国内同胞早已威震网络赌场界、横扫抢红包，吓得赌场都要专门把他们列为高危人群，让我觉得如果我不在网络赌场里赢上一把，简直要愧为中国人了。 于是我带着崇高的国家荣誉感，集中玩了一批网络赌场，三个月下来，也赚了有三千多块钱。然后我就对网络赌场失去了兴 趣，因为比较好的赌场我都差不多玩遍了，但更重要的原因是，我已经逐步掌握了算牌的方法，揩网络赌场油与算牌所能带来的刺激和成就感比起来，便如河水之于 沧海，完全不值一提。 二十一点算牌法的原理，可见附三。</p>
+<p>我趁着放寒假，练了两个星期的“高低算牌法”，到快开学前的那个星期，租了一辆车，揣着网络赌场揩来的3600美元，直奔大西洋城而去。 </p>
+<h4 id="二十一点基本策略"><a href="#二十一点基本策略" class="headerlink" title="二十一点基本策略"></a>二十一点基本策略</h4><p>规则为：庄家在软17点时停止、无限分牌加倍、允许投降。 为了方便分析，我们先假设52张牌出现的概率始终相同，也就是说每张牌都是从一个无穷多副牌组成的牌盒里抽出来的，或者说前面出过的牌不影响后面的牌，换句话说，每张牌相互之间都是独立的。 </p>
+<p>首先，一个明显的结论是，每个点数出现的概率都是1/13，除了10出现的概率是4/13。这样，如果庄家的亮牌是A，他实际拿到BJ的可能性是4/13，拿不到的可能性是9/13。玩家投保险，保中了的回报是双倍保险金，没中的话输掉保险金，</p>
+<p><code>因此总预期收益是： 4/13 * 2 + 9 * 1/13 * (-1) = －1/13 </code>也就是说，从概率上讲，投保险是得不偿失的，平均13次保险中，赢4次，输9次，庄家占7.7％的优势。所以，永远不要买保险。 在二十一点中，玩家最大的劣势来自于，如果玩家的牌爆掉的话，赌注当场输掉，哪怕庄家随后也爆掉。因此，如果玩家模仿庄家的玩法：16点或以下要牌，17点或以上停住，必输无疑。 为此赌场在游戏里加入了各种功能：分牌、加倍、投降、玩家拿了BJ后赢一倍半，以吸引赌客。如果用正确的玩法，可以把庄家的优势缩小到0.5％。这就是所谓“基本策略”。 </p>
+<p>在上述规则下，基本策略为：</p>
+<pre class=" language-text"><code class="language-text">庄家：2 3 4 5 6 7 8 9 10 A 
+玩家点数 
+<=8 9 10 11 12 13 14 15 16 h d s r>=17 S S S S S S S S S S </=8></code></pre>
+<p>其中H表示“要牌（Hit）”<br>S表示“停牌（Stand）”<br>D表示“加倍（Double down）”<br>R表示“投降（suRrender）”。 </p>
+<p>以上的点数都是所谓“硬点数”，即不包括A或A算1点，以后如果不特别指明，各点都指“硬点数”。手中有A，而且A算11也不会爆掉，就是所谓“软点数”，应该运用下面这个表格： </p>
+<pre class=" language-text"><code class="language-text">庄家：2 3 4 5 6 7 8 9 10 A 
+玩家 
+13 H H H D D H H H H 
+H 14 H H H D D H H H 
+H H 15 H H D D D H H 
+H H H 16 H H D D D H 
+H H H H 17 H D D D D 
+H H H H H 18 S DS DS 
+DS DS S S H H H >=19 
+S S S S S S S S S S </code></pre>
+<p>“D”和“DS”都表示加倍，<br>在不可以加倍的情况下，<br>“D”表示要牌<br>“DS”表示停牌。 </p>
+<p>最后是分牌策略：</p>
+<pre class=" language-text"><code class="language-text">庄家：2 3 4 5 6 7 8 9 10 A 
+玩家 A,A P P P P P P P P 
+P P 2,2 H H P P P P H H 
+H H 3,3 H H P P P P H H 
+H H 4,4 H H H P P H H H 
+H H 5,5 D D D D D D D D 
+H H 6,6 H P P P P H H H 
+H H 7,7 P P P P P P H H 
+H H 8,8 P P P P P P P P 
+P P 9,9 P P P P P S P P 
+S S 10,10 S S S S S S S S S S </code></pre>
+<p>其中P表示“分牌（sPlit）”。 这三张表并不难背，因为里面有许多规律，最显著的就是有个分界线，横亘于庄家亮牌是6点和7点之间。</p>
+<p>6点以下是庄家的坏牌，比较容易爆掉，对玩家有利，7点以上则对玩家不太利。我写了个小程序，算了下庄家的各个亮牌所可能导致的最终结果的百分比： </p>
+<pre class=" language-text"><code class="language-text">亮牌 2 3 4 5 6 7 8 9 10 A 
+17: 13.9 13.5 13.0 12.5 16.8 37.0 12.9 12.0 11.1 13.0 
+18: 13.4 12.9 12.5 12.1 10.9 13.9 35.9 12.0 11.1 13.1 
+19: 12.8 12.4 12.0 11.6 10.3 8.0 12.9 35.1 11.1 13.1 
+20: 12.1 11.8 11.4 11.0 9.9 7.6 7.0 12.0 34.3 13.1 
+21: 11.4 11.2 10.8 10.5 9.4 7.0 6.6 6.1 11.2 36.2 
+爆掉: 36.4 38.3 40.3 42.2 42.8 26.4 24.6 22.8 21.2 11.5 </code></pre>
+<p>由此再来看基本策略，就很好理解，也很好背了： </p>
+<pre class=" language-text"><code class="language-text">1，11点或更小时，总可以要牌，如果9点时庄家亮牌是3到6，10或11点时庄家亮牌比自己差，还可以加倍。 
+2，17点或更多时，总该停住。 
+3，12点到16点间，如果庄家亮牌是6或更小，就该停住，不然就该要牌。
+唯一的例外是12点对庄家亮牌2和3点时也该要牌。另外在自己拿到16点而庄家是9、10、A，或自己拿到15点，而庄家是10点时，应该投降。 </code></pre>
+<p>对于嫌麻烦的人，记住以上三点，就已经够了，因为这张表涵盖了大多数情况，拿到A和两张同样点数的牌的可能性不是那 么大。但是如果想少输点钱，还是必须把后两张表也背下来。好在它们也很有规律，比如软13到18点对庄家6点或更小的亮牌时，可以考虑加倍，其判断梯形 为：不太有把握的软13、14点只对庄家的5、6点加倍，软15、16扩展到庄家的4点，软17、18则扩展到3点。 </p>
+<h4 id="二十一点算牌法"><a href="#二十一点算牌法" class="headerlink" title="二十一点算牌法"></a>二十一点算牌法</h4><p>二十一点能够算牌，是因为我们在讨论“基本策略”时提出的一个假设不成立： 假设52张牌出现的概率始终相同，也就是说每张牌都是从一个无穷多副牌组成的牌盒里抽出来的，或者说前面出过的牌不影响后面的牌，换句话说，每张牌相互之间都是独立的。 </p>
+<p>显然，不可能有这样的由无穷多副牌组成的牌盒，前面出过的牌总会影响后面的牌。在算牌法刚出现的时代，赌场仍然使用 一副牌来玩二十一点，那么这个影响就更明显。比如，发牌员发出牌来，你拿到两个10（包括J、Q、K），庄家亮牌也是10，翻出底牌来还是10，那么下一 轮里10出现的概率已不再是4/13，而是12/48，即1/4，略低于4/13。同样的，其他点数出现的概率也已不再是1/13，而是1/12。 象轮盘赌这类游戏，每次轮盘转出什么结果，和上一次完全没有关系。</p>
+<p>还有牌九这类游戏，每玩过一轮，就重新洗牌。这些 游戏里，每把赌博之间都是互相独立的。而二十一点的各把之间，在重新洗牌之前，不是独立的。前一把出现了什么牌，会影响到下一把。因此，如果我们能记住前 面出过什么牌，就能大致预测以后的赌局走势，从而调整自己的赌注，在对自己有利时下大注，在对庄家有利时下小注或不下注，就能在这个游戏里占到优势。 UCLA的数学教授爱德华·索普（Edward Thorp）在六十年代初发明了二十一点算牌法。他注意到，如果二十一点里10出现的概率增高，对庄家是不利的，因为庄家在十六点及更低时必须要牌，10 越多，就越容易爆掉，而对玩家来说，则更容易拿到BJ，赢一倍半的钱。所以他用一种“算10法（10-Count）”，计算剩下的牌中10的比例。正常情 况下，这个比例应该是4/13，庄家占优势。</p>
+<p>但当前面出掉很多小牌，10的比例达到1/3时，优势就转移到玩家这边来了。 索普的运气不错，那时计算机也发明出来了，他找到IBM公司里的朋友，写了个程序来验证自己的算牌方法。那时的计算机跟今天比起来，还是速度低下、体积庞大的蠢物，足足运转了七天七夜，终于证明了这个方法是可行的。索普又自己到赌场里亲自实践，结果果然大赢特赢。 1962年他出版了《打败庄家（Beat the Dealer）》一书，向公众介绍了自己的算牌法。这不再是我们惯见的萝卜赌经，而是有数学基础的方法，因为它在不同的赢牌概率P（i）时下不同的赌注B (i），虽然总的胜利概率之和ΣP（i）仍然小于1/2，但只要在P（i)大时下大的B(i)，P(i)小时下小的B（i），就能使总回报ΣR（i）P （i）大于ΣB（i）。 “算10法”比较难操作，需要极高的心智和注意力。好在群众的智慧是无穷的，算牌手们沿着索普指定的方向走下 去，已经把算牌方法演进得越来越简单实用（索普本人在60年代后期就淡出了赌博界，带着他在赌场赢来的大笔资金，进入股票市场，运用他的数学知识，现在已 成为超级巨富）。 </p>
+<p>我使用的是一种叫“高低法（High-Low）”的算牌法。在游戏过程中，我们把每一张出现的2，3，4，5，6都 算＋1点，7，8，9算0点，10，J，Q，K，A算－1点，将各点相加，结果越大，就表示前面出现过的小牌越多，对玩家越有利。反过来，如果结果是个负 数，就表示前面出过的大牌比小牌多，对庄家有利。</p>
+<p>比如前面出现的牌是： </p>
+<pre><code>4，9，10，5，J，A，8，10，Q，2，6，K，J，7 那么点数就是4张小牌减7张大牌，是－3。</code></pre><p>当然，在游戏过程中，你不可能叫庄家把牌局暂停，让你从容加减。你必须在每张牌出来时，就在心里默算点数。比如在上面的例子里，从第一张牌出现开始，<br>你就应该在心里默算出： </p>
+<pre><code>1，1，0，1，0，－1，0，－2，－3，－2，－1，－2，－3，－3 </code></pre><p>在实际运用中，还可以采取两张牌一计的技巧，因为庄家发牌时一般速度较快，这样可以方便地把很多同时出现的大牌和小牌抵消不计，提高了算牌速度，减少了可能的计算错误。</p>
+<p>比如在上面的例子里，如果两张牌一计，那就是： </p>
+<pre><code>1，1，－1，－2，－2，－2，－3 </code></pre><p>如果是一副牌，－3已经是很糟糕的点数了，这时应该下最小注，或者停止不玩。不过一般来说，现在的赌场都使用六到八副牌，那么在六副牌312张牌内，发出14张牌，还剩298张牌，平均每副牌的点数是（－3）×52/298＝－0.5，还算可以忍受。 显然，在每一盒牌（“盒（shoe）”是指一盒牌从开始发牌到洗牌的过程，这一盒牌里可能有六副、四副、八副或其他 副数的牌）的开始，由于大部分牌还未发出，因此平均点数总是在0左右。要到牌盒里剩下的牌不多时，平均点数才可能比较显著地偏离0。所以算牌手在算牌时都 会寻找合适的赌桌，一方面要找人少的桌子，因为人越少，你在单位时间内玩的次数越多，实际收益才会更逼近期望值；另一方面要找切牌少的发牌员，因为该切多 少牌，赌场只有个大概的规定，具体执行还是要靠发牌员的觉悟，所以同一家赌场里，不同的发牌员切出的牌来常会差很多。 在点数变大时，该怎么提高赌注，每个算牌手都有自己的习惯和算度。贝尔实验室的J.L.Kelly推导出，在理论上，如果你占A的优势，本钱总数为R，那么最优赌注是B = A * R。 比如你有一万块钱的本钱，现在你占1%的优势，那么就应该在这把压下一百块钱。这种下注法称为Kelly法，是在理论上可以获得最大回报的方法。但在实践中，Kelly法过于冒险，只可视为下注时的上限。 </p>
+<p>斯坦福·王（Stanford Wong）在《二十一点的秘密(Blackjack Secrets）》里说，平均点数每高一点，可增加约0.5％的优势。他是二十一点算牌界里最有名的祖师爷级人物之一，甚至排在爱德华·索普之前，第一个 进入了“二十一点名人堂（Blackjack Hall of Fame）”。我第一次看到他的名字时，还以为他是个华裔，后来在电视上看到他，才发现他是个白人老头。斯坦福·王其实是他的艺名：他毕业于斯坦福大学， 再加上“王”这个很有气势的东方姓氏。他对中国文化好像很感兴趣，自己创办了一家出版社，就叫“Pi Yee”——念念看吧：什么？辟易？便宜？别数典忘祖了，人家这叫“牌艺出版社”！ </p>
+<p>按照他的说法，在0点时，庄家占0.5％的优势。到了1点，双方差不多扯平。平均点数升到2时，玩家就已经占0.5％的优势，可以提高赌注了。如果按照Kelly法，平均点数为7时，玩家占3％的优势，就得将自己全部本钱的3％投进去，显然太过冒险了。 在点数为0或负数时，玩家应当下最小赌注。当然，最好是干脆不玩，坐等点数变正。早期的那些算牌手就是这么做的，但 现在的赌场里，从游弋在各桌间的桌面经理，到高悬在天花板上的监视器，都虎视耽耽地监视着每个赌徒的行为。如果总是点坏不压、点好猛压，还不如直接在脸上 写五个大字：“我是算牌手”，说不定还暴露得晚些。 </p>
+<p>算牌本身并不难练，难的是和赌场的斗智斗勇。在《打败庄家》刚出版时，它轰动一时，很快成为畅销书，激励了无数赌徒 涌向赌场，一试身手。赌场对此大为恐慌，有些赌场甚至关闭了二十一点赌桌。但是，很快他们就又恢复了镇定，因为他们发现，涌来的大批赌徒中，只有极少数人 真正掌握了算牌法，其他大多数人只不过是一知半解、道听途说的萝卜。索普这本书为极少数人提供了打败庄家的方法，但对大多数人来说，实际效果却是个二十一 点的广告，让他们自以为也能够在二十一点上赢钱。这是个赌场梦寐以求的广告，是他们自己无论花多少钱都做不来的广告。 </p>
+<p>在刚开始时，算牌还是个新鲜事物，没有这方面的法律规定，开赌场的又多是黑社会，一旦发现算牌手，一律当老千处理， 痛打一顿后扔到臭水沟里。后来大家总算对算牌达成了共识：这是样技术活儿，是在遵守赌场规则的情况下，靠自己的聪明才智来赌博的一种方式；同时各大赌场也 多被华尔街的金融巨头接管，开始西装领带的管理方式，摆开堂堂之阵来赚钱，于是算牌手总算不再有人身危险，但赌场既然是人家的私有财产，就有权把某些他们 不欢迎的人拒之门外。因此，对一个算牌手来说，难的不是算牌，而是如何不被赌场发现。 同时，赌场也巧妙地改变了规则，比如用八副牌代替一副牌，牌发到一半时就重新洗牌，不准在一局牌的中间加入赌局等 等，极大地增加了算牌的难度。</p>
+<p>他们逐渐稳住阵脚后，便大开二十一点赌桌，从此二十一点就取代了“蟹赌（Crap）”，成为赌场里最热门的游戏。但在算牌法 已经发明了四十多年后的今天，我们在二十一点赌桌上见到的，仍然大多数是萝卜。</p>
+<h5 id="js简易代码实现"><a href="#js简易代码实现" class="headerlink" title="js简易代码实现"></a>js简易代码实现</h5><p>1.方法一</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">cc</span><span class="token punctuation">(</span>card<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 请把你的代码写在这条注释以下</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>card<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">4</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">6</span><span class="token punctuation">:</span>
+      count <span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">10</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'J'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'Q'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'K'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'A'</span><span class="token punctuation">:</span>
+      count <span class="token operator">--</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> count<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span><span class="token string">"Bet"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> count<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span><span class="token string">"Hold"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> count<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span><span class="token string">"Hold"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//5</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//5</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//0</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token string">'K'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//-5</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//-5</span></code></pre>
+<p>2.1.方法二</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">cc</span><span class="token punctuation">(</span>card<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 请把你的代码写在这条注释以下</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>card<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">4</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token number">6</span><span class="token punctuation">:</span>
+      count <span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">10</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'J'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'Q'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'K'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'A'</span><span class="token punctuation">:</span>
+      count <span class="token operator">--</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> count<span class="token operator">+</span><span class="token punctuation">(</span>count<span class="token operator">></span><span class="token number">0</span><span class="token operator">?</span><span class="token string">' Bet'</span><span class="token punctuation">:</span><span class="token string">' Hold'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//5</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//5</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//0</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token string">'K'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//-5</span>
+<span class="token function">cc</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//-5</span></code></pre>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+        background-color:#fff;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
+                </a>
+            </div>
+            <br>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
+                    《21点算法》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/04/08/21-dian-suan-fa/" property="cc:attributionName" rel="cc:attributionURL">
+                三叶雨
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'fd8d307e4f111e6aa53d',
+        clientSecret: 'a243afb349a739ded9b5666ae4d9cefdb4303a6d',
+        repo: 'gitalk',
+        owner: 'huangjianghua',
+        admin: "huangjianghua",
+        id: '2018-04-08T23-45-39',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/06/22/hua-die/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/23.jpg" class="responsive-img" alt="化蝶">
+                        
+                        <span class="card-title">化蝶</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            传说中悲伤的眼泪可以化为星...
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-06-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/诗/" class="post-category" target="_blank">
+                                    诗
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/随心笔/" target="_blank">
+                        <span class="chip bg-color">随心笔</span>
+                    </a>
+                    
+                    <a href="/tags/诗/" target="_blank">
+                        <span class="chip bg-color">诗</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/03/24/tian-xing-jiu-ge/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/txjg/123.jpg" class="responsive-img" alt="天行九歌中自己喜欢的句子">
+                        
+                        <span class="card-title">天行九歌中自己喜欢的句子</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            此生何用声声叹道不尽流年看流沙聚散回首天涯路远
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-03-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/名句/" class="post-category" target="_blank">
+                                    名句
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/人生格言/" target="_blank">
+                        <span class="chip bg-color">人生格言</span>
+                    </a>
+                    
+                    <a href="/tags/名句/" target="_blank">
+                        <span class="chip bg-color">名句</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 三叶雨<br />'
+            + '作者: 三叶雨<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4 ,h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4 ,h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+           Copyright © 2019 All Rights Reserved Design By 三叶雨
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">25.8k.</span>
+            
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m8 l8 copy-right">
+            <span id="timeDate"></span><span id="times"></span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("12/29/2018 23:27:23");//在此处修改你的建站时间
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; 
+                    dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+                    hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); 
+                    if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); 
+                    if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已存活 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+         </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/huangjianghua" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2446875775@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2446875775" class="tooltipped" data-tooltip="QQ联系我: 2446875775" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!--鼠标单击显示文字-->
+
+<!--控制雪花效果-->
+<script type="text/javascript" src="/js/snow.js"></script>
+<!--速度优化脚本-->
+<script src="https://cdn.zrahh.com/js/instantclick-1.2.2.js" type="module"></script>
+</body>
+</html>
