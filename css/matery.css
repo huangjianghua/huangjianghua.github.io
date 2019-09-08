@@ -22,9 +22,9 @@
         display: inline-block;
         
     }
-    header .brand-logo .logo-span{
+    /* header .brand-logo .logo-span{
         display: inline-block;
-    }
+    } */
 }
 
 /*大屏幕下(桌面类)的样式*/
@@ -39,9 +39,9 @@
         margin: 0 auto;
         max-width: 1250px;
     }
-    header .brand-logo .logo-span{
+    /* header .brand-logo .logo-span{
         display: inline-block;
-    }
+    } */
 }
 
 body {
@@ -211,9 +211,11 @@ mark {
 }
 
 header .side-nav {
-    width: 240px;
+    width: 296px;
     z-index: 999;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 7px 10px 0 rgba(0, 0, 0, 0.12);
+    background: #fff;
+    outline: none;
 }
 
 nav {
@@ -247,6 +249,7 @@ header .brand-logo .logo-span {
     -moz-animation: mymove 5s infinite linear;	/* Firefox */
     -webkit-animation: mymove 5s infinite linear;	/* Safari 和 Chrome */
     -o-animation: mymove 5s infinite linear;	/* Opera */
+    overflow: hidden;
 }
 @keyframes mymove{
     0%{background-position:0 0;}
@@ -262,7 +265,7 @@ header .brand-logo .logo-span {
     100%{background-position:-100% 0};
 }
 /* 兼容Opera */
-@-o-keyframes mymove {
+@-o-keyframes mymove{
     0%{background-position:0 0;}
     100%{background-position:-100% 0};
 }
@@ -281,12 +284,15 @@ header .button-collapse i {
 
 header .side-nav .mobile-head {
     padding: 0 15px;
+    background: url(../medias/banner/1.jpg) transparent no-repeat center;
+    background-size: cover;
 }
 
 header .side-nav .mobile-head img {
+    box-sizing: border-box;
     margin-top: 30px;
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
 }
 
 /* 添加背景移动效果 */

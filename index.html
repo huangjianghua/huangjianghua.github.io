@@ -200,8 +200,6 @@
         
     </ul>
 
-    /*添加彩色滚动变换字体*/
-    <div> </div>
     <script type="text/javascript" src="/js/textcolorhjh.js"></script>
     
 </div>
@@ -314,13 +312,6 @@
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
-    <div id="prev-cover" class="left waves-effect">
-        <i class="icon"></i>
-    </div>
-    <div id="next-cover" class="right waves-effect">
-        <i class="icon fa"></i>
-    </div>
-    
 
     <div class="carousel-item red white-text bg-cover about-cover">
         <div class="container">
@@ -388,18 +379,18 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
     
     
-    <div class="carousel-item amber white-text carousel-post bg-cover" style="background-image: url('/medias/tonyon/hchj1.jpg');">
+    <div class="carousel-item amber white-text carousel-post bg-cover" style="background-image: url('/medias/banner/12.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <div class="title center-align">最美的句子</div>
+                    <div class="title center-align">Web全栈技术栈</div>
                     <div class="description center-align">
                     
-                        人的一生是万里河山，来往无数过客,只为遇见你...
+                        一入全栈深似海，在全栈的道路越走越远。
                     
                     </div>
                     <div class="cover-btns">
-                        <a href="/2019/07/25/zui-mei-de-ju-zi/" class="waves-effect waves-light btn" target="_blank">
+                        <a href="/2019/09/03/web-quan-zhan-ji-zhu-zhan/" class="waves-effect waves-light btn" target="_blank">
                             <i class="icon fa fa-eye fa-fw"></i>阅读更多
                         </a>
                     </div>
@@ -409,18 +400,39 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     </div>
     
     
-    <div class="carousel-item amber white-text carousel-post bg-cover" style="background-image: url('/medias/sfzyz/sfz.png');">
+    <div class="carousel-item amber white-text carousel-post bg-cover" style="background-image: url('/medias/banner/0.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <div class="title center-align">详解身份证验证规则</div>
+                    <div class="title center-align">MyDemo</div>
                     <div class="description center-align">
                     
-                        用JS实现第二代身份证验证...
+                        自己练习的一些小Demo
                     
                     </div>
                     <div class="cover-btns">
-                        <a href="/2018/03/21/shen-fen-zheng-yan-zheng/" class="waves-effect waves-light btn" target="_blank">
+                        <a href="/2019/09/03/qian-duan-xiao-xiang-mu/" class="waves-effect waves-light btn" target="_blank">
+                            <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover" style="background-image: url('/medias/banner/1.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">软件私藏分享</div>
+                    <div class="description center-align">
+                    
+                        软件亲测好用分享
+                    
+                    </div>
+                    <div class="cover-btns">
+                        <a href="/2019/01/02/ruan-jian-si-cang-fen-xiang/" class="waves-effect waves-light btn" target="_blank">
                             <i class="icon fa fa-eye fa-fw"></i>阅读更多
                         </a>
                     </div>
@@ -447,7 +459,7 @@ $(function () {
     let autoCarousel = function() {
         carouselIntervalId = setInterval(function () {
             coverSlider.carousel('next');
-        }, 6000);
+        }, 8000);
     };
     autoCarousel();
     
@@ -459,16 +471,6 @@ $(function () {
         
     };
 
-    
-    // prev and next cover post.
-    $('#prev-cover').click(function () {
-        coverSlider.carousel('prev');
-        restartPlay();
-    });
-    $('#next-cover').click(function () {
-        coverSlider.carousel('next');
-        restartPlay();
-    });
     
 });
 </script>
@@ -519,17 +521,17 @@ $(function () {
     new APlayer({
         container: document.getElementById('aplayer'),
         fixed: 'true' === 'true',
-        autoplay: 'false' === 'true',
+        autoplay: 'true' === 'true',
         theme: '#999999',
         loop: 'all',
         order: 'list',
         preload: 'auto',
-        volume: Number('0.7'),
+        volume: Number('0.3'),
         mutex: 'true' ==='true',
         listFolded: 'true' === 'true',
         lrcType: Number(''),
         listMaxHeight: '',
-        audio: JSON.parse('[{"name":"我离孤单几公里","artist":"华晨宇","url":"http://www.ytmp3.cn/down/56487.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"国王与乞丐","artist":"华晨宇","url":"http://www.ytmp3.cn/down/59794.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"烟火里的尘埃","artist":"华晨宇","url":"http://huangjianghua.com/wp-content/uploads/2019/06/华晨宇-烟火里的尘埃.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"山海","artist":"华晨宇","url":"http://www.ytmp3.cn/down/53961.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"易燃易爆炸","artist":"华晨宇","url":"http://www.ytmp3.cn/down/53960.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"Love Story","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-Love-Story-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"I Knew You Were Trouble.","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-I-Knew-You-Were-Trouble-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"Welcome To New York","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-泰勒·斯威夫特-Welcome-To-New-York-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"We Are Never Ever Getting Back Together","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-We-Are-Never-Ever-Getting-Back-Together-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"小幸运","artist":"田馥甄","url":"http://huangjianghua.com/wp-content/uploads/2019/01/田馥甄-小幸运-mqms2.flac","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/57c4e79969401b644d277dd2.jpg"},{"name":"スパークル (火花) (Movie ver.)","artist":"AnimeVibe","url":"http://huangjianghua.com/wp-content/uploads/2019/03/RADWIMPS-ラッドウィンプス-スパークル-火花-Movie-ver..mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/1234.jpeg"},{"name":"千坂-At","artist":"千坂","url":"http://huangjianghua.com/wp-content/uploads/2019/01/千坂-At-The-Edge.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/千坂-At-The-Edge-mp3-image.jpg"},{"name":"光るなら","artist":"Goose house","url":"http://huangjianghua.com/wp-content/uploads/2019/01/Goose-house-光るなら.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/Goose-house-光るなら-mp3-image.jpg"},{"name":"オレンジ","artist":"Orange","url":"http://huangjianghua.com/wp-content/uploads/2019/03/7-Seven-Oops-オレンジ-Orange.flac","cover":"http://huangjianghua.com/wp-content/uploads/2019/03/7-Seven-Oops-オレンジ-Orange-flac-image.jpg"},{"name":"Everything I Need","artist":"Skylar Grey","url":"http://huangjianghua.com/wp-content/uploads/2019/01/Skylar-Grey-Everything-I-Need.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/Skylar-Grey-Everything-I-Need-mp3-image.jpg"},{"name":"A Little Story","artist":"Valentin","url":"http://huangjianghua.com/wp-content/uploads/2019/01/Valentin-A-Little-Story.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/Valentin-A-Little-Story-mp3-image.jpg"}]')
+        audio: JSON.parse('[{"name":"オレンジ","artist":"Orange","url":"http://huangjianghua.com/wp-content/uploads/2019/03/7-Seven-Oops-オレンジ-Orange.flac","cover":"http://huangjianghua.com/wp-content/uploads/2019/03/7-Seven-Oops-オレンジ-Orange-flac-image.jpg"},{"name":"光るなら","artist":"Goose house","url":"http://huangjianghua.com/wp-content/uploads/2019/01/Goose-house-光るなら.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/Goose-house-光るなら-mp3-image.jpg"},{"name":"七色シンフォニー","artist":"Goose house","url":"http://www.ytmp3.cn/down/37429.mp3","cover":"http://img.ytmp3.cn/image/36.jpg"},{"name":"我离孤单几公里","artist":"华晨宇","url":"http://www.ytmp3.cn/down/56487.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"国王与乞丐","artist":"华晨宇","url":"http://www.ytmp3.cn/down/59794.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"烟火里的尘埃","artist":"华晨宇","url":"http://huangjianghua.com/wp-content/uploads/2019/06/华晨宇-烟火里的尘埃.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"山海","artist":"华晨宇","url":"http://www.ytmp3.cn/down/53961.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"易燃易爆炸","artist":"华晨宇","url":"http://www.ytmp3.cn/down/53960.mp3","cover":"http://zxpic.imtt.qq.com/zxpic_imtt/2019/07/13/1540/originalimage/154345_274408414_2_435_626.jpg"},{"name":"Love Story","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-Love-Story-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"I Knew You Were Trouble.","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-I-Knew-You-Were-Trouble-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"Welcome To New York","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-泰勒·斯威夫特-Welcome-To-New-York-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"We Are Never Ever Getting Back Together","artist":"Taylor Swift","url":"http://huangjianghua.com/wp-content/uploads/2019/06/Taylor-Swift-We-Are-Never-Ever-Getting-Back-Together-mqms2.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/567a00c069401b25bbb725c0.jpg"},{"name":"小幸运","artist":"田馥甄","url":"http://huangjianghua.com/wp-content/uploads/2019/01/田馥甄-小幸运-mqms2.flac","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/57c4e79969401b644d277dd2.jpg"},{"name":"スパークル (火花) (Movie ver.)","artist":"AnimeVibe","url":"http://huangjianghua.com/wp-content/uploads/2019/03/RADWIMPS-ラッドウィンプス-スパークル-火花-Movie-ver..mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/1234.jpeg"},{"name":"千坂-At","artist":"千坂","url":"http://huangjianghua.com/wp-content/uploads/2019/01/千坂-At-The-Edge.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/千坂-At-The-Edge-mp3-image.jpg"},{"name":"Everything I Need","artist":"Skylar Grey","url":"http://huangjianghua.com/wp-content/uploads/2019/01/Skylar-Grey-Everything-I-Need.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/Skylar-Grey-Everything-I-Need-mp3-image.jpg"},{"name":"A Little Story","artist":"Valentin","url":"http://huangjianghua.com/wp-content/uploads/2019/01/Valentin-A-Little-Story.mp3","cover":"http://huangjianghua.com/wp-content/uploads/2019/01/Valentin-A-Little-Story-mp3-image.jpg"}]')
     });
 });
 </script>
@@ -550,23 +552,17 @@ $(function () {
 
     
     
-    <div class="col s12 m6">
-        <div class="post-card" style="background-image: url('/medias/banner/8.jpg')">
+    <div class="col s12">
+        <div class="post-card" style="background-image: url('/medias/banner/12.jpg')">
             <div class="post-body">
                 <div class="post-categories">
                     
-                    <a href="/categories/诗/" class="category" target="_blank">诗</a>
-                    
                 </div>
-                <a href="/2018/01/06/niu-yue-bi-jia-zhou-shi-jian-zao-3-ge-xiao-shi/" target="_blank">
-                    <h3 class="post-title">纽约比加州时间早3个小时s</h3>
+                <a href="/2019/09/03/web-quan-zhan-ji-zhu-zhan/" target="_blank">
+                    <h3 class="post-title">Web全栈技术栈</h3>
                 </a>
-                <p class="post-description">
-                    
-                        据说，这是一首火遍美国的小诗。
-                    
-                </p>
-                <a href="/2018/01/06/niu-yue-bi-jia-zhou-shi-jian-zao-3-ge-xiao-shi/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
+                <p class="post-description">一入全栈深似海，在全栈的道路越走越远。</p>
+                <a href="/2019/09/03/web-quan-zhan-ji-zhu-zhan/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -574,23 +570,35 @@ $(function () {
     </div>
     
     
-    <div class="col s12 m6">
-        <div class="post-card" style="background-image: url('/medias/sfzyz/sfz.png')">
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('/medias/banner/0.jpg')">
             <div class="post-body">
                 <div class="post-categories">
                     
-                    <a href="/categories/正则/" class="category" target="_blank">正则</a>
+                </div>
+                <a href="/2019/09/03/qian-duan-xiao-xiang-mu/" target="_blank">
+                    <h3 class="post-title">MyDemo</h3>
+                </a>
+                <p class="post-description">自己练习的一些小Demo</p>
+                <a href="/2019/09/03/qian-duan-xiao-xiang-mu/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('/medias/banner/1.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
                     
                 </div>
-                <a href="/2018/03/21/shen-fen-zheng-yan-zheng/" target="_blank">
-                    <h3 class="post-title">详解身份证验证规则</h3>
+                <a href="/2019/01/02/ruan-jian-si-cang-fen-xiang/" target="_blank">
+                    <h3 class="post-title">软件私藏分享</h3>
                 </a>
-                <p class="post-description">
-                    
-                        用JS实现第二代身份证验证...
-                    
-                </p>
-                <a href="/2018/03/21/shen-fen-zheng-yan-zheng/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
+                <p class="post-description">软件亲测好用分享</p>
+                <a href="/2019/01/02/ruan-jian-si-cang-fen-xiang/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)">
                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -616,10 +624,94 @@ $(function () {
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2019/09/03/qian-duan-xiao-xiang-mu/">
+                        <div class="card-image">
+                            
+                            <img src="/medias/banner/0.jpg" class="responsive-img" alt="MyDemo">
+                            
+                            <span class="card-title">MyDemo</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                自己练习的一些小Demo
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-03
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-user fa-fw"></i>
+                                三叶雨
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Demo/" target="_blank">
+                            <span class="chip bg-color">Demo</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/09/03/web-quan-zhan-ji-zhu-zhan/">
+                        <div class="card-image">
+                            
+                            <img src="/medias/banner/12.jpg" class="responsive-img" alt="Web全栈技术栈">
+                            
+                            <span class="card-title">Web全栈技术栈</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一入全栈深似海，在全栈的道路越走越远。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-03
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-user fa-fw"></i>
+                                三叶雨
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/web全栈技术栈/" target="_blank">
+                            <span class="chip bg-color">web全栈技术栈</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2019/07/25/zui-mei-de-ju-zi/">
                         <div class="card-image">
                             
-                            <img src="/medias/tonyon/hchj.jpg" class="responsive-img" alt="最美的句子">
+                            <img src="/medias/banner/61.jpg" class="responsive-img" alt="最美的句子">
                             
                             <span class="card-title">最美的句子</span>
                         </div>
@@ -796,10 +888,52 @@ $(function () {
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2019/01/02/ruan-jian-si-cang-fen-xiang/">
+                        <div class="card-image">
+                            
+                            <img src="/medias/banner/1.jpg" class="responsive-img" alt="软件私藏分享">
+                            
+                            <span class="card-title">软件私藏分享</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                软件亲测好用分享
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-user fa-fw"></i>
+                                三叶雨
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/软件私藏/" target="_blank">
+                            <span class="chip bg-color">软件私藏</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2018/06/22/hua-die/">
                         <div class="card-image">
                             
-                            <img src="/medias/banner/23.jpg" class="responsive-img" alt="化蝶">
+                            <img src="/medias/banner/40.jpg" class="responsive-img" alt="化蝶">
                             
                             <span class="card-title">化蝶</span>
                         </div>
@@ -992,60 +1126,6 @@ $(function () {
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2018/03/06/shu-zu-fang-fa/">
-                        <div class="card-image">
-                            
-                            <img src="/medias/jss/js.png" class="responsive-img" alt="数组方法">
-                            
-                            <span class="card-title">数组方法</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                数组方法集合
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-03-06
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/javascript/" class="post-category" target="_blank">
-                                    javascript
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/javascript/" target="_blank">
-                            <span class="chip bg-color">javascript</span>
-                        </a>
-                        
-                        <a href="/tags/数组方法/" target="_blank">
-                            <span class="chip bg-color">数组方法</span>
-                        </a>
-                        
-                        <a href="/tags/JS高级程序设计/" target="_blank">
-                            <span class="chip bg-color">JS高级程序设计</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
                     <a href="/2018/02/11/hexo-zhong-tian-jia-ren-ti-shi-zhong/">
                         <div class="card-image">
                             
@@ -1090,106 +1170,6 @@ $(function () {
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/02/10/yong-hexo-github-da-jian-ge-ren-bo-ke/">
-                        <div class="card-image">
-                            
-                            <img src="/medias/featureimages/hexo.png" class="responsive-img" alt="用Hexo+github搭建个人博客">
-                            
-                            <span class="card-title">用Hexo+github搭建个人博客</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                用Hexo+github搭建个人博客
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Hexo/" class="post-category" target="_blank">
-                                    Hexo
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/GitHub/" target="_blank">
-                            <span class="chip bg-color">GitHub</span>
-                        </a>
-                        
-                        <a href="/tags/Hexo/" target="_blank">
-                            <span class="chip bg-color">Hexo</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/02/07/zai-github-zhong-tian-jia-ssh-key-mi-chi/">
-                        <div class="card-image">
-                            
-                            <img src="/medias/banner/11.jpg" class="responsive-img" alt="在GitHub中添加SSH key密匙">
-                            
-                            <span class="card-title">在GitHub中添加SSH key密匙</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                在GitHub中添加SSHkey密匙
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/GitHub/" class="post-category" target="_blank">
-                                    GitHub
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/GitHub/" target="_blank">
-                            <span class="chip bg-color">GitHub</span>
-                        </a>
-                        
-                        <a href="/tags/ssh-key/" target="_blank">
-                            <span class="chip bg-color">ssh key</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1226,7 +1206,7 @@ $(function () {
            Copyright © 2019 All Rights Reserved Design By 三叶雨
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">25.8k.</span>
+                <span class="white-color">26.5k.</span>
             
             
 			
