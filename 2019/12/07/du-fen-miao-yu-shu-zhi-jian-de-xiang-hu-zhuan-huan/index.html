@@ -1,0 +1,986 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="度分秒与数值间的相互转换, 三叶雨">
+    <meta name="description" content="经过一段时间的学习后发现度分秒与数值之间的转换是现实生活中需要必备的一项小技能，尤其是学测绘学的你大部分时间你都会接触到像全站仪等仪器那么你就会和度分秒分不开了，今天我们不说web就讲讲度分秒与数值之间的相互转换吧。
+
+
+看完本篇后你将会把">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>度分秒与数值间的相互转换 | 三叶雨</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="nav-transparent bg-color">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                </a>
+                <span class="logo-span">
+                    <a href="/">
+                        <p>三叶雨</p>
+                    </a>
+                </span>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-bars fa-xs"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-briefcase"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav" style="opacity:1 !important;">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">三叶雨</div>
+        <div class="logo-desc" id="binft">
+            
+            
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-briefcase"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/huangjianghua" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <script type="text/javascript" src="/js/textcolorhjh.js"></script>
+    
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/huangjianghua" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/15.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        度分秒与数值间的相互转换
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/度分秒/" target="_blank">
+                                <span class="chip bg-color">度分秒</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/度分秒/" class="post-category" target="_blank">
+                                度分秒
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-12-07
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        5 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>经过一段时间的学习后发现度分秒与数值之间的转换是现实生活中需要必备的一项小技能，尤其是学测绘学的你大部分时间你都会接触到像全站仪等仪器那么你就会和度分秒分不开了，今天我们不说web就讲讲度分秒与数值之间的相互转换吧。</p>
+<img src="/medias/dfm/biaoqb.jpg" width="50%">
+
+<h5 id="看完本篇后你将会把度分秒与数值之间的换算彻底熟练起来。"><a href="#看完本篇后你将会把度分秒与数值之间的换算彻底熟练起来。" class="headerlink" title="看完本篇后你将会把度分秒与数值之间的换算彻底熟练起来。"></a>看完本篇后你将会把度分秒与数值之间的换算彻底熟练起来。</h5><p><em>会用到的函数有：</em></p>
+<blockquote>
+<p><strong>Excel中的函数有</strong>：</p>
+</blockquote>
+<ol>
+<li><strong>RADIANS()</strong> 表示角度化为弧度。</li>
+<li><strong>TEXT()</strong>  把数值格式转换为文本格式。</li>
+<li><strong>INT()</strong> 向下取整。</li>
+<li><strong>LEFT()</strong>  从字符串第一个返回指定个数的字符。</li>
+<li><strong>MID()</strong>  从字符串中指定位置起始位置起返回一个指定长度的字符。</li>
+<li><strong>FIND()</strong>  返回一个字符串在另一个字符串中出现的起始位置(区分大小写)。</li>
+</ol>
+<blockquote>
+<p><strong>JS中的函数</strong></p>
+</blockquote>
+<ol start="7">
+<li><strong>Math.abs(x)</strong> 可返回数的绝对值。</li>
+<li><strong>Math.floor(x)</strong> 可对一个数进行下舍入，方法执行的是向下取整计算，它返回的是小于或等于函数参数，并且与之最接近的整数。</li>
+<li><strong>Math.round(x)</strong> 可把一个数字舍入为最接近的整数，例如，3.5 将舍入为 4，而 -3.5 将舍入为 -3。</li>
+<li><strong>split()</strong> 用于把一个字符串分割成字符串数组，例如，”2:3:4:5”.split(“:”)      //将返回[“2”, “3”, “4”, “5”]。</li>
+</ol>
+<h4 id="一、数值转度分秒"><a href="#一、数值转度分秒" class="headerlink" title="一、数值转度分秒"></a>一、数值转度分秒</h4><blockquote>
+<p>将数值转换为度分秒根据输入方法的不同分为以下几种方法：</p>
+</blockquote>
+<p><strong>1. 利用Excel中自定义规则</strong> <code>[h]°mm′ss.00″</code>  </p>
+<blockquote>
+<p>这种方法是根据Excel表中设置单元格格式→数字→自定义属性中设定自己需要的规则如下图所示：</p>
+</blockquote>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%921.png" alt="自定义规则"></p>
+<blockquote>
+<p>这种根据日期设置的规则输入时也要遵循一定的规则如下图所示的输入方式：</p>
+</blockquote>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%922.png" alt="输入规则"></p>
+<blockquote>
+<p>其实它的真面目是这样的</p>
+</blockquote>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%923.png" alt="真面目"></p>
+<blockquote>
+<p>所以这种方法的优缺点很明显只可以单纯的进行相加减不可以进行乘除而且精度也不怎么高，输入时也较为麻烦，而且表格不可以拖拉求值所以我不推荐这种方法。</p>
+</blockquote>
+<hr>
+<p><strong>2. 在Excel表格中编公式</strong></p>
+<ul>
+<li>低精度方法</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">=</span><span class="token function">TEXT</span><span class="token punctuation">(</span>要转化的数值<span class="token operator">/</span><span class="token number">24</span><span class="token punctuation">,</span><span class="token string">"[h]°m′sss.000″"</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p>转化结果如下图</p>
+</blockquote>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%924.png" alt="编公式"></p>
+<ul>
+<li>高精度方法</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">=</span><span class="token function">TEXT</span><span class="token punctuation">(</span><span class="token function">INT</span><span class="token punctuation">(</span>XX<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token string">"°"</span><span class="token operator">&amp;</span><span class="token function">TEXT</span><span class="token punctuation">(</span><span class="token function">INT</span><span class="token punctuation">(</span><span class="token punctuation">(</span>XX<span class="token operator">-</span><span class="token function">INT</span><span class="token punctuation">(</span>XX<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"00"</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token string">"′"</span><span class="token operator">&amp;</span><span class="token function">TEXT</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>XX<span class="token operator">-</span><span class="token function">INT</span><span class="token punctuation">(</span>XX<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">60</span><span class="token operator">-</span><span class="token function">INT</span><span class="token punctuation">(</span><span class="token punctuation">(</span>XX<span class="token operator">-</span><span class="token function">INT</span><span class="token punctuation">(</span>XX<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">60</span><span class="token punctuation">,</span><span class="token string">"00.0000"</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token string">""</span><span class="token string">""</span>
+
+<span class="token comment" spellcheck="true">//XX表示要转化的数值</span></code></pre>
+<blockquote>
+<p>转化后的结果如下图</p>
+</blockquote>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%925.png" alt="转换结果"></p>
+<blockquote>
+<p>这种方法我认为是比较不错的方法转化精度高，而且表格可以拖拉求值提高了工作效率。</p>
+</blockquote>
+<p><code>注：以上的 数值转度后，转化后的度分秒不可以直接用来相加减那怎么样才可以相加减呢？且看下面讲解</code></p>
+<hr>
+<h4 id="二、度分秒转数值"><a href="#二、度分秒转数值" class="headerlink" title="二、度分秒转数值"></a>二、度分秒转数值</h4><p>度分秒转数值是很简单的，但是我们要弄懂其中的来龙去脉，来我们先回顾一下当年学的知识点。</p>
+<p><img src="/medias/dfm/%E5%BC%A7%E5%BA%A6.png" alt="弧度"></p>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token comment" spellcheck="true">//我们知道：</span>
+<span class="token number">1</span>°<span class="token operator">=</span><span class="token number">60</span>′，<span class="token number">1</span>′<span class="token operator">=</span><span class="token number">60</span>″ ，<span class="token number">1</span>°<span class="token operator">=</span><span class="token number">3600</span>″。
+
+
+<span class="token comment" spellcheck="true">//在Unicode 代码中</span>
+度的符号对应的 Unicode 代码为：00B0 （六十进制），显示为°。
+分的符号对应的 Unicode 代码为：<span class="token number">2032</span> （六十进制），显示为′。
+秒的符号对应的 Unicode 代码为：<span class="token number">2033</span> （六十进制），显示为″。
+
+<span class="token comment" spellcheck="true">//角度与弧度的关系：</span>
+<span class="token number">1</span>弧度<span class="token operator">=</span><span class="token number">180</span><span class="token operator">/</span>π 度
+<span class="token number">1</span>度<span class="token operator">=</span>π<span class="token operator">/</span><span class="token number">180</span> 弧度
+<span class="token number">1</span>弧度等于<span class="token number">57.3</span>度，<span class="token number">1</span>弧度等于<span class="token number">60</span>弧分，<span class="token number">1</span>弧分等于<span class="token number">60</span>弧秒，所以<span class="token number">1</span>弧秒就是<span class="token number">3600</span>分之一弧度，就是<span class="token number">0.01592</span>度。
+因为：
+角度<span class="token number">180</span>°<span class="token operator">=</span>π弧度
+所以：
+<span class="token number">1</span>弧度<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">180</span><span class="token operator">/</span>π<span class="token punctuation">)</span>°角度
+<span class="token number">1</span>角度<span class="token operator">=</span>π<span class="token operator">/</span><span class="token number">180</span>弧度</code></pre>
+<blockquote>
+<p>有了以上的知识点那么我们就可以开始了。</p>
+</blockquote>
+<p><strong>1. 利用公式</strong></p>
+<blockquote>
+<p>这种是最简单的方法，适用于 <code>度分秒都是分开这种表格</code>，如下图。</p>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//单纯的角度转数值:</span>
+<span class="token operator">=</span><span class="token punctuation">(</span>度°<span class="token operator">+</span>分′<span class="token operator">/</span><span class="token number">60</span><span class="token operator">+</span>秒″<span class="token operator">/</span><span class="token number">3600</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">//角度转数值再转弧度：这里要用到RADIANS()函数</span>
+<span class="token operator">=</span><span class="token function">RADIANS</span><span class="token punctuation">(</span>度°<span class="token operator">+</span>分′<span class="token operator">/</span><span class="token number">60</span><span class="token operator">+</span>秒″<span class="token operator">/</span><span class="token number">3600</span><span class="token punctuation">)</span>
+</code></pre>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%926.png" alt="转化后"></p>
+<hr>
+<p><strong>2. 也是利用公式</strong></p>
+<blockquote>
+<p>这种方法公式有点复杂但是它可以把一个度分秒直接转换为数值，非常的方便。</p>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//单纯的角度转数值:</span>
+<span class="token operator">=</span><span class="token function">LEFT</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">,</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"°"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">1</span><span class="token operator">+</span><span class="token function">MID</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">,</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"°"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">60</span><span class="token operator">+</span><span class="token function">MID</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">,</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"′"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token function">LEN</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"′"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">3600</span>  <span class="token comment" spellcheck="true">//其中523表示你要输入的度分秒</span>
+
+<span class="token comment" spellcheck="true">//角度转数值再转弧度：这里要用到RADIANS()函数</span>
+<span class="token operator">=</span><span class="token function">RADIANS</span><span class="token punctuation">(</span><span class="token function">LEFT</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">,</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"°"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">1</span><span class="token operator">+</span><span class="token function">MID</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">,</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"°"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">60</span><span class="token operator">+</span><span class="token function">MID</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">,</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"′"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token function">LEN</span><span class="token punctuation">(</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">FIND</span><span class="token punctuation">(</span><span class="token string">"′"</span><span class="token punctuation">,</span><span class="token number">523</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">3600</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//其中523表示你要输入的度分秒</span>
+</code></pre>
+<blockquote>
+<p>转换结果如下图</p>
+</blockquote>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%927.png" alt="转化结果"></p>
+<h4 id="用JS代码实现"><a href="#用JS代码实现" class="headerlink" title="用JS代码实现"></a>用JS代码实现</h4><blockquote>
+<p>但用JS实现会造成一定的精度损失，因为我们看到的数值是计算机用二进制转换为我们可以识别的十进制，这其中的相互转换会造成精度丢失，当然这个精度损失是可以通过代码的优化来进行实现的，以下只是一个简单实现。</p>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+    <span class="token keyword">function</span> <span class="token function">degturnDs</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//数值度转度分秒</span>
+        value <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> du <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//度</span>
+        <span class="token keyword">var</span> fen <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value <span class="token operator">-</span> du<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//分</span>
+        <span class="token keyword">var</span> miao <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value <span class="token operator">-</span> du<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3600</span> <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//秒</span>
+        <span class="token keyword">return</span> du <span class="token operator">+</span> <span class="token string">'°'</span> <span class="token operator">+</span> fen <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span> miao <span class="token operator">+</span> <span class="token string">'"'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">dsturnDeg</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">////度分秒转数值度</span>
+        <span class="token keyword">var</span> du <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"°"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//度</span>
+        <span class="token keyword">var</span> fen <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"°"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//分</span>
+        <span class="token keyword">var</span> miao <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"°"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//秒</span>
+
+        <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>du<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>fen<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">60</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>miao<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">3600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">degturnDs</span><span class="token punctuation">(</span><span class="token number">24.88764</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//24°53'16"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">dsturnDeg</span><span class="token punctuation">(</span><span class="token number">24</span>°<span class="token number">53</span>'<span class="token number">16</span>"<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//24.88764</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p><strong>下图是转换后用前两者方法的结果进行对比，我们发现两者的转换结果一致只是表格的编制不同，至于要用什么方法这个取决于大家的实际情况。</strong></p>
+<p><img src="/medias/dfm/%E5%BA%A6%E5%88%86%E7%A7%928.png" alt="两者转化结果对比"></p>
+<h5 id="以上就是要说的一些方法，这也是我常用的一些方法，如果要更快的计算角度我觉得这些是必须要掌握的方法，当然了如果你有更好的转化方法也可以发至我的邮箱我们方便交流2446875775-qq-com。"><a href="#以上就是要说的一些方法，这也是我常用的一些方法，如果要更快的计算角度我觉得这些是必须要掌握的方法，当然了如果你有更好的转化方法也可以发至我的邮箱我们方便交流2446875775-qq-com。" class="headerlink" title="以上就是要说的一些方法，这也是我常用的一些方法，如果要更快的计算角度我觉得这些是必须要掌握的方法，当然了如果你有更好的转化方法也可以发至我的邮箱我们方便交流2446875775@qq.com。"></a>以上就是要说的一些方法，这也是我常用的一些方法，如果要更快的计算角度我觉得这些是必须要掌握的方法，当然了如果你有更好的转化方法也可以发至我的邮箱我们方便交流<code><a href="mailto:2446875775@qq.com" target="_blank" rel="noopener">2446875775@qq.com</a></code>。</h5>
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+        background-color:#fff;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
+                </a>
+            </div>
+            <br>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
+                    《度分秒与数值间的相互转换》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/12/07/du-fen-miao-yu-shu-zhi-jian-de-xiang-hu-zhuan-huan/" property="cc:attributionName" rel="cc:attributionURL">
+                三叶雨
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'fd8d307e4f111e6aa53d',
+        clientSecret: 'a243afb349a739ded9b5666ae4d9cefdb4303a6d',
+        repo: 'gitalk',
+        owner: 'huangjianghua',
+        admin: "huangjianghua",
+        id: '2019-12-07T19-25-16',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/12/07/du-fen-miao-yu-shu-zhi-jian-de-xiang-hu-zhuan-huan/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/15.jpg" class="responsive-img" alt="度分秒与数值间的相互转换">
+                        
+                        <span class="card-title">度分秒与数值间的相互转换</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            生活就像在度分秒与数值间不断的相互转换...
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/度分秒/" class="post-category" target="_blank">
+                                    度分秒
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/度分秒/" target="_blank">
+                        <span class="chip bg-color">度分秒</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/09/03/qian-duan-xiao-xiang-mu/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/0.jpg" class="responsive-img" alt="Demo">
+                        
+                        <span class="card-title">Demo</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            自己练习的一些小Demo
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            三叶雨
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Demo/" target="_blank">
+                        <span class="chip bg-color">Demo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 三叶雨<br />'
+            + '作者: 三叶雨<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+           Copyright © 2019 All Rights Reserved Design By 三叶雨
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">30k.</span>
+            
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m8 l8 copy-right">
+            <span id="timeDate"></span><span id="times"></span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("12/29/2018 23:27:23");//在此处修改你的建站时间
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; 
+                    dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+                    hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); 
+                    if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); 
+                    if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已存活 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+         </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/huangjianghua" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2446875775@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2446875775" class="tooltipped" data-tooltip="QQ联系我: 2446875775" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!--鼠标单击显示文字-->
+
+<!--控制雪花效果-->
+<script type="text/javascript" src="/js/snow.js"></script>
+<!--速度优化脚本-->
+<script src="https://cdn.zrahh.com/js/instantclick-1.2.2.js" type="module"></script>
+</body>
+</html>
