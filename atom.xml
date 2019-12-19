@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://huangjianghua.github.io/"/>
-  <updated>2019-12-07T13:38:19.808Z</updated>
+  <updated>2019-12-19T04:40:13.499Z</updated>
   <id>http://huangjianghua.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>手把手教你安装南方CASS系列</title>
+    <link href="http://huangjianghua.github.io/2019/12/19/shou-ba-shou-jiao-ni-an-zhuang-nan-fang-cass9-x-xi-lie/"/>
+    <id>http://huangjianghua.github.io/2019/12/19/shou-ba-shou-jiao-ni-an-zhuang-nan-fang-cass9-x-xi-lie/</id>
+    <published>2019-12-19T02:52:06.000Z</published>
+    <updated>2019-12-19T04:40:13.499Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;一、基本简介&quot;&gt;&lt;a href=&quot;#一、基本简介&quot; class=&quot;headerlink&quot; title=&quot;一、基本简介&quot;&gt;&lt;/a&gt;一、基本简介&lt;/h4&gt;&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="CASS" scheme="http://huangjianghua.github.io/categories/CASS/"/>
+    
+    
+      <category term="CASS" scheme="http://huangjianghua.github.io/tags/CASS/"/>
+    
+  </entry>
   
   <entry>
     <title>度分秒与数值间的相互转换</title>
@@ -138,7 +164,7 @@
       
         
         
-          &lt;h3 id=&quot;世界上最大声的噪音&quot;&gt;&lt;a href=&quot;#世界上最大声的噪音&quot; class=&quot;headerlink&quot; title=&quot;世界上最大声的噪音&quot;&gt;&lt;/a&gt;世界上最大声的噪音&lt;/h3&gt;&lt;div id=&quot;echarts5380&quot; style=&quot;width:
+          &lt;h3 id=&quot;世界上最大声的噪音&quot;&gt;&lt;a href=&quot;#世界上最大声的噪音&quot; class=&quot;headerlink&quot; title=&quot;世界上最大声的噪音&quot;&gt;&lt;/a&gt;世界上最大声的噪音&lt;/h3&gt;&lt;div id=&quot;echarts9854&quot; style=&quot;width:
         
       
     
@@ -548,36 +574,6 @@
       <category term="javascript" scheme="http://huangjianghua.github.io/tags/javascript/"/>
     
       <category term="数组方法" scheme="http://huangjianghua.github.io/tags/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用SVG实现简单的文字描边重绘</title>
-    <link href="http://huangjianghua.github.io/2017/02/06/svg/"/>
-    <id>http://huangjianghua.github.io/2017/02/06/svg/</id>
-    <published>2017-02-06T12:47:32.000Z</published>
-    <updated>2019-09-02T12:38:16.814Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;SVG 指可伸缩矢量图形 (Scalable Vector Graphics),SVG 是使用 XML 来描述二维图形和绘图程序的语言。&lt;br&gt;本篇内容只介绍一些本次实例要用到的属性具体请看 &lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="SVG" scheme="http://huangjianghua.github.io/categories/SVG/"/>
-    
-    
-      <category term="SVG" scheme="http://huangjianghua.github.io/tags/SVG/"/>
-    
-      <category term="HTML5" scheme="http://huangjianghua.github.io/tags/HTML5/"/>
-    
-      <category term="CSS3" scheme="http://huangjianghua.github.io/tags/CSS3/"/>
     
   </entry>
   

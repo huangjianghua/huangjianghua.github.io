@@ -1,0 +1,912 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="手把手教你安装南方CASS系列, 三叶雨">
+    <meta name="description" content="一、基本简介南方CASS官网CASS 地形地籍成图软件，是由南方数码基于 AutoCAD 平台技术研发，具有完全知识产权的 GIS 前端数据处理系统。广泛应于地形成图、地籍成图、工程测量应用、空间数据建库和更新等领域。自CASS软件推出以来">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>手把手教你安装南方CASS系列 | 三叶雨</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="nav-transparent bg-color">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                </a>
+                <span class="logo-span">
+                    <a href="/">
+                        <p>三叶雨</p>
+                    </a>
+                </span>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-bars fa-xs"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-briefcase"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav" style="opacity:1 !important;">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">三叶雨</div>
+        <div class="logo-desc" id="binft">
+            
+            
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-briefcase"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/huangjianghua" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <script type="text/javascript" src="/js/textcolorhjh.js"></script>
+    
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/huangjianghua" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/nfcass/nfcass.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        手把手教你安装南方CASS系列
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CASS/" target="_blank">
+                                <span class="chip bg-color">CASS</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CASS/" class="post-category" target="_blank">
+                                CASS
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-12-19
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        5 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h4 id="一、基本简介"><a href="#一、基本简介" class="headerlink" title="一、基本简介"></a>一、基本简介</h4><p><a href="http://o.southgis.com/download/init?typeId=98016ad8-dece-4992-a3f8-a37397763a60" target="_blank" rel="noopener">南方CASS官网</a><br>CASS 地形地籍成图软件，是由南方数码基于 AutoCAD 平台技术研发，具有完全知识产权的 GIS 前端数据处理系统。广泛应于地形成图、地籍成图、工程测量应用、空间数据建库和更新等领域。自CASS软件推出以来，软件销量超过18000套，市场占有率遥遥领先，已经成为业内应用最广、使用最方便快捷的软件品牌。也是用户量最大、升级最快、服务最好的主流成图和土石方计算软件系统。CASS软件经过十几年的稳定发展，市场和技术十分成熟，用户遍及全国各地，涵盖了测绘、国土、规划、房产、市政、环保、地质、交通、水利、电力、矿山及相关行业，得到了用户的一致好评。使用这款南方CASS完美版让你体验最专业的工程制图，如果您遇到了什么在工程制图方面的问题，使用南方CASS让你迎刃而解。</p>
+<h4 id="二、CASS版本与CAD版本支持情况"><a href="#二、CASS版本与CAD版本支持情况" class="headerlink" title="二、CASS版本与CAD版本支持情况"></a>二、CASS版本与CAD版本支持情况</h4><blockquote>
+<p>南方CASS7.0/7.1支持CAD的版本有：AutoCAD2004/2005/2006<br>南方CASS9.0支持CAD的版本有：AutoCAD2004/2005/2006/2007/2008/2010<br>南方CASS9.1支持CAD的版本有：AutoCAD2004/2005/2006/2007/2008/2010/2012<br>南方CASS9.2支持CAD的版本有：AutoCAD2004/2005/2006/2007/2008/2010/2012/2014/2015<br>南方CASS10.0支持CAD的版本有：AutoCAD2010/2012/2014/2015/2016<br>南方CASS10.1.6支持CAD的版本有：AutoCAD2004/2005/2006/2007/2008/2010/2012/2014/2015/2016/2017/2018/2019(CASS10.1.6是编写该文章时最新的版本)</p>
+</blockquote>
+<h4 id="三、系统配置要求"><a href="#三、系统配置要求" class="headerlink" title="三、系统配置要求"></a>三、系统配置要求</h4><p>CASS10.0 支持 32 位系统、64 位系统，下面分别对这两个系统的配置做简单<br>说明</p>
+<ol>
+<li>32 位系统要求：<br>操作系统：Microsoft® Windows® 10，Microsoft® Windows® 8/8.1，Microsoft<br>Windows 8/8.1 Pro，Microsoft Windows 8/8.1 Enterprise，Windows 7 Ultimate，<br>Professional，Home Premium; Windows Vista（SP1）; Windows XP（SP2 或更高版<br>本）<br>浏览器：Windows Internet Explorer 7.0 或更高版本<br>CPU：Windows Vista - 采用 SSE2 技术的 Intel Pentium 4 或 AMD Athlon Dual<br>Core，3.0 GHz 或更高版本; Windows XP - 具有 SSE2 技术的 Intel Pentium 4 或 AMD<br>Athlon Dual Core，1.6 GHz 或更高版本<br>内存：Windows Vista - 2 GB RAM，Windows XP - 2 GB RAM<br>显示分辨率：1024 x 768 显示，带 True Color<br>硬盘：1 GB 可用磁盘空间进行安装<br>指点设备：MS-Mouse 兼容</li>
+<li>64 位系统要求：<br>操作系统：Microsoft® Windows® 10，Microsoft® Windows® 8/8.1，Microsoft<br>Windows 8/8.1 Pro，Microsoft Windows 8/8.1 Enterprise，Windows 7 Ultimate，<br>Professional，Home Premium; Windows Vista（SP1）; Windows XP（SP2 或更高版<br>本）<br>浏览器：Windows Internet Explorer 7.0 或更高版本<br>CPU 类型：AMD Athlon 64 或具有 SSE2 技术的 Opteron; 英特尔奔腾 4 或至强<br>英特尔 EM64T 支持和 SSE2 技术<br>内存：Windows Vista - 2 GB RAM，Windows XP - 2 GB RAM<br>显示分辨率：1024 x 768，带 True Color<br>硬盘：1.5 GB 可用磁盘空间用于安装<br>指点设备：MS-Mouse 兼容<br>媒体（CD ROM 与 DVD）</li>
+</ol>
+<h4 id="四、安装说明"><a href="#四、安装说明" class="headerlink" title="四、安装说明"></a>四、安装说明</h4><p><code>注：CASS是基于AutoCAD平台二次开发所以安装CASS前必须安装相对应兼容的AutoCAD版本，否则无法进行安装。</code><br>CASS 9.2 支持 AutoCAD2004-2015 平台，不过CASS9.2以下对Win10操作系统不够友好，CAD版本太高对CASS又不友好，对于Win10用户推荐安装 AutoCAD2007/2008版本，Win7及其他操作系统兼容性更好一些可以根据自己的情况安装以更好的使用 CASS的各个功能。</p>
+<p><a href="链接：https://pan.baidu.com/s/1bVDImbEKoN53HBIEJLr-6Q">内含Cass9.0–9.2破解版安装包</a> 提取码：ivfu</p>
+<blockquote>
+<p>本文中的CASS9.2版本(32位）是配合Win10专业版(64位操作系统)+AutoCAD2007 版本为例，介绍 CASS9.2的安装步骤。</p>
+</blockquote>
+<blockquote>
+<p>CAD的安装包及安装教程请看我分享的这篇<a href="https://huangjianghua.github.io/2019/01/02/ruan-jian-si-cang-fen-xiang/">软件私藏分享</a>里面有CAD2004-2020版本的破解版安装包,请你自行下载安装。</p>
+</blockquote>
+<ol>
+<li>以管理员身份运行安装CASS9.2程序。</li>
+</ol>
+<img src="/medias/nfcass/nfcass1.jpg" width="40%">
+
+<ol start="2">
+<li>同意许可协议，并点击下一步按钮。</li>
+</ol>
+<img src="/medias/nfcass/nfcass2.jpg" width="40%">
+
+<ol start="3">
+<li>安装向导会自动检测本机电脑上已安装的 AutoCAD 版本，用户只需选择需要运行的AutoCAD 平台，并选择 CASS9.2 的安装路径，点击下一步按钮（本文以 AtuoCAD2007 为例，安装路径最好为默认路径，也可以更改路径不过要记得安装在哪个文件夹，这样卸载时能卸载干净。）我的已经安装过，所以系统会提醒更新或卸载。<code>注：如果提示无法检测到说明你的这个CASS版本不支持你所安装的CAD版本，所以为了节省时间安装前一定要查看CASS所兼容CAD的版本。</code></li>
+</ol>
+<img src="/medias/nfcass/nfcass3.jpg" width="40%">
+
+<ol start="4">
+<li>点击开始安装按钮进行安装。</li>
+</ol>
+<img src="/medias/nfcass/nfcass4.jpg" width="40%">
+
+<ol start="5">
+<li>提示驱动安装后直接点下一步即可。</li>
+</ol>
+<img src="/medias/nfcass/nfcass5.jpg" width="40%">
+
+<img src="/medias/nfcass/nfcass7.jpg" width="40%">
+
+<ol start="6">
+<li>安装完成后，点击安装完成按钮，退出 CASS9.2 安装向导。</li>
+</ol>
+<img src="/medias/nfcass/nfcass8.jpg" width="40%">
+
+<ol start="7">
+<li>开始破解，以下分别是破解流程。</li>
+</ol>
+<img src="/medias/nfcass/nfcass9.jpg" width="40%">
+
+<ol start="8">
+<li>破解文件必须安装到CASS所安装的目录。</li>
+</ol>
+<img src="/medias/nfcass/nfcass10.jpg" width="40%">
+
+<img src="/medias/nfcass/nfcass11.jpg" width="40%">
+
+<img src="/medias/nfcass/nfcass12.jpg" width="40%">
+
+<ol start="8">
+<li>安装完成后,以管理员身份打开CASS。</li>
+</ol>
+<p><img src="/medias/nfcass/nfcass13.jpg" alt="安装完成后，记得测试是否可用。"></p>
+<p><img src="/medias/featureimages/012.jpg" alt="请记住我的名字：三叶雨"></p>
+<h3 id="如果本教程对你有用就关注我的博客，目前已在搭建微信公众号，干货会越来越多，希望您一直陪伴左右。"><a href="#如果本教程对你有用就关注我的博客，目前已在搭建微信公众号，干货会越来越多，希望您一直陪伴左右。" class="headerlink" title="如果本教程对你有用就关注我的博客，目前已在搭建微信公众号，干货会越来越多，希望您一直陪伴左右。"></a>如果本教程对你有用就关注我的博客，目前已在搭建微信公众号，干货会越来越多，希望您一直陪伴左右。</h3><p><code>郑重声明：软件资源全部收集来源于互联网，所提供下载链接也是站外链接，网站本身并不存储相关资源文件，版权归著作人和出版社所有。本站仅提供一个观摩学习的环境，将不对任何资源负法律责任。如果侵犯了您的权利，请及时发送邮件到“<a href="mailto:2446875775@qq.com" target="_blank" rel="noopener">2446875775@qq.com</a>”，我会第一时间进行改正或删除处理，保证您的权利！站内所有资源仅供学习与参考，请勿用于商业用途，并请于下载后24小时内删除，否则产生的一切后果将由您自己承担！</code></p>
+<p>　　</p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+        background-color:#fff;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
+                </a>
+            </div>
+            <br>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
+                    《手把手教你安装南方CASS系列》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/12/19/shou-ba-shou-jiao-ni-an-zhuang-nan-fang-cass9-x-xi-lie/" property="cc:attributionName" rel="cc:attributionURL">
+                三叶雨
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'fd8d307e4f111e6aa53d',
+        clientSecret: 'a243afb349a739ded9b5666ae4d9cefdb4303a6d',
+        repo: 'gitalk',
+        owner: 'huangjianghua',
+        admin: "huangjianghua",
+        id: '2019-12-19T10-52-06',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/12/19/shou-ba-shou-jiao-ni-an-zhuang-nan-fang-cass9-x-xi-lie/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/nfcass/nfcass.jpg" class="responsive-img" alt="手把手教你安装南方CASS系列">
+                        
+                        <span class="card-title">手把手教你安装南方CASS系列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            内含Cass9.0--9.2破解版安装包...
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CASS/" class="post-category" target="_blank">
+                                    CASS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CASS/" target="_blank">
+                        <span class="chip bg-color">CASS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/12/07/du-fen-miao-yu-shu-zhi-jian-de-xiang-hu-zhuan-huan/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/15.jpg" class="responsive-img" alt="度分秒与数值间的相互转换">
+                        
+                        <span class="card-title">度分秒与数值间的相互转换</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            生活就像在度分秒与数值间不断的相互转换...
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/度分秒/" class="post-category" target="_blank">
+                                    度分秒
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/度分秒/" target="_blank">
+                        <span class="chip bg-color">度分秒</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 三叶雨<br />'
+            + '作者: 三叶雨<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+           Copyright © 2019 All Rights Reserved Design By 三叶雨
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">31.5k.</span>
+            
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m8 l8 copy-right">
+            <span id="timeDate"></span><span id="times"></span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("12/29/2018 23:27:23");//在此处修改你的建站时间
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; 
+                    dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+                    hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); 
+                    if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); 
+                    if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已存活 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+                setInterval("createtime()",250);
+            </script>
+         </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/huangjianghua" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2446875775@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2446875775" class="tooltipped" data-tooltip="QQ联系我: 2446875775" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!--鼠标单击显示文字-->
+
+<!--控制雪花效果-->
+<script type="text/javascript" src="/js/snow.js"></script>
+<!--速度优化脚本-->
+<script src="https://cdn.zrahh.com/js/instantclick-1.2.2.js" type="module"></script>
+</body>
+</html>
