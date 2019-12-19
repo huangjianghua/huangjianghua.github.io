@@ -4,22 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="哈雷, 三叶雨">
-    <meta name="description" content="
-&#34;我本是一缕游魂,是你用意志物化了我!
-注定此生,为你而生,为你而灭!&#34;
-或许生来便要做出选择
-或把意志尘封于寒冰
-或让生命燃烧成炽热
-我知我的生命
-无法承载爱你的激情
-但依然选择
-焚尽躯体
-绕你运行
-我选择身的死
-即是心的生
-若未见你
-">
+    <meta name="keywords" content="JS事件处理程序, 三叶雨">
+    <meta name="description" content="DOM0级事件处理程序
+
+用onclick添加事件
+
+
+ btn.onclick = function(){
+        exmple.style.color = &#34;#2C3E50&#34;;
+        exmple.style.back">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>哈雷 | 三叶雨</title>
+    <title>JS事件处理程序 | 三叶雨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -284,13 +277,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/jss/js.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        哈雷
+                        JS事件处理程序
                     </div>
                 </div>
             </div>
@@ -300,10 +293,99 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -312,12 +394,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/随心笔/" target="_blank">
-                                <span class="chip bg-color">随心笔</span>
+                            <a href="/tags/JS高级程序设计/" target="_blank">
+                                <span class="chip bg-color">JS高级程序设计</span>
                             </a>
                         
-                            <a href="/tags/诗/" target="_blank">
-                                <span class="chip bg-color">诗</span>
+                            <a href="/tags/事件处理程序/" target="_blank">
+                                <span class="chip bg-color">事件处理程序</span>
                             </a>
                         
                     </div>
@@ -328,8 +410,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/诗/" class="post-category" target="_blank">
-                                诗
+                            <a href="/categories/事件处理程序/" class="post-category" target="_blank">
+                                事件处理程序
                             </a>
                         
                     </div>
@@ -340,14 +422,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-06-22
+                    2017-11-24
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        216
+                        298
                     </div>
                     
 
@@ -370,38 +452,78 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="/medias/featureimages/%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97.gif" alt="哈雷"></p>
-<pre class=" language-text"><code class="language-text">"我本是一缕游魂,是你用意志物化了我!
-注定此生,为你而生,为你而灭!"
-或许生来便要做出选择
-或把意志尘封于寒冰
-或让生命燃烧成炽热
-我知我的生命
-无法承载爱你的激情
-但依然选择
-焚尽躯体
-绕你运行
-我选择身的死
-即是心的生
-若未见你
-我只不过是天空中一颗平静的星
-如今
-即使我消逝
-至少还有你记得那不变的爱情
-望每个月夜
-你都会仰望
-天空中
-那个你曾向我许愿的地方
-每当你迷惘
-愿我未逝的意志
-都做你无形的指引
-注定了我的爱
-只能依附于短暂的生命
-但若可以
-来世
-仍愿做你的哈雷
-那颗曾划破你天空的星</code></pre>
-<p><img src="/medias/featureimages/012.jpg" alt="哈雷"></p>
+                <h4 id="DOM0级事件处理程序"><a href="#DOM0级事件处理程序" class="headerlink" title="DOM0级事件处理程序"></a>DOM0级事件处理程序</h4><blockquote>
+<ol>
+<li>用onclick添加事件</li>
+</ol>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"> btn<span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"#2C3E50"</span><span class="token punctuation">;</span>
+        exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>background <span class="token operator">=</span> <span class="token string">"red"</span><span class="token punctuation">;</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span></code></pre>
+<h4 id="DOM1级事件处理程序"><a href="#DOM1级事件处理程序" class="headerlink" title="DOM1级事件处理程序"></a>DOM1级事件处理程序</h4><blockquote>
+<ol>
+<li>用addEventListener 接收三个参数（“要处理的事件名”， 作为事件处理的函数， 一个布尔值布尔值true表示在捕获阶段调用事件处理程序，false反之。）添加事件.</li>
+</ol>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span><span class="token string">"#42B983"</span><span class="token punctuation">;</span>
+    exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>opacity <span class="token operator">=</span><span class="token string">".4"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"DOMContentLoaded"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span><span class="token string">"#42B983"</span><span class="token punctuation">;</span>
+    exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>opacity <span class="token operator">=</span><span class="token string">".4"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<ol start="2">
+<li>removeEventListener(与传入的时参数相同，因为匿名函数无法删除，所以函数必须不是匿名函数，必须向以下这样函数要有个名字。)</li>
+</ol>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> hadel <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span><span class="token string">"red"</span><span class="token punctuation">;</span>
+    exmple<span class="token punctuation">.</span>style<span class="token punctuation">.</span>opacity <span class="token operator">=</span><span class="token string">"1"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+btn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> hadel<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+btn<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> hadel<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span></code></pre>
+<h4 id="跨浏览器事件处理程序"><a href="#跨浏览器事件处理程序" class="headerlink" title="跨浏览器事件处理程序"></a>跨浏览器事件处理程序</h4><blockquote>
+<ol>
+<li>EventUtil.addHandler接收三个参数(“要操作的元素”， “事件名称”， ‘事件处理程序函数)</li>
+</ol>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> EventUtil <span class="token operator">=</span> <span class="token punctuation">{</span>
+        addHandler<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> type<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>addEventListener<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                element<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> handler<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>attachEvent<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                element<span class="token punctuation">.</span><span class="token function">attachEvent</span><span class="token punctuation">(</span><span class="token string">"on"</span> <span class="token operator">+</span> type<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+                element<span class="token punctuation">[</span><span class="token string">"on"</span> <span class="token operator">+</span> type<span class="token punctuation">]</span> <span class="token operator">=</span> handler<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        removeHandler<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> type<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>removeEventListener<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> handler<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>detachEvent<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                element<span class="token punctuation">.</span><span class="token function">detachEvent</span><span class="token punctuation">(</span><span class="token string">"on"</span> <span class="token operator">+</span> type<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+                element<span class="token punctuation">[</span><span class="token string">"on"</span> <span class="token operator">+</span> type<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//使用</span>
+
+    <span class="token keyword">const</span> exmple <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"exmple"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> btn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"btn"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> hadel <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    EventUtil<span class="token punctuation">.</span><span class="token function">addHandler</span><span class="token punctuation">(</span>btn<span class="token punctuation">,</span> <span class="token string">"click"</span><span class="token punctuation">,</span> hadel<span class="token punctuation">)</span>
+</code></pre>
 
             </div>
             <hr>
@@ -558,10 +680,10 @@
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《哈雷》
+                    《JS事件处理程序》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/06/22/ha-lei/" property="cc:attributionName" rel="cc:attributionURL">
-                林儿
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/11/24/3.js-shi-jian-chu-li-cheng-xu/" property="cc:attributionName" rel="cc:attributionURL">
+                三叶雨
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -600,7 +722,7 @@
         repo: 'gitalk',
         owner: 'huangjianghua',
         admin: "huangjianghua",
-        id: '2019-06-22T23-34-14',
+        id: '2017-11-24T22-19-13',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -625,30 +747,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/06/28/jue-yu-ze/">
+                <a href="/2017/12/19/2.js-han-shu-lei-xing/">
                     <div class="card-image">
                         
-                        <img src="/medias/txjg/123.jpg" class="responsive-img" alt="决与择的高度">
+                        <img src="/medias/jss/js.png" class="responsive-img" alt="JS函数类型">
                         
-                        <span class="card-title">决与择的高度</span>
+                        <span class="card-title">JS函数类型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            抉择本身并没有对错，为了寻求世人的认同而寻求答案...
+                            函数类型
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-28
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-12-19
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/人生感悟/" class="post-category" target="_blank">
-                                    人生感悟
+                            <a href="/categories/javascript/" class="post-category" target="_blank">
+                                    javascript
                                 </a>
                             
                             
@@ -658,8 +780,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/决与择的高度/" target="_blank">
-                        <span class="chip bg-color">决与择的高度</span>
+                    <a href="/tags/javascript/" target="_blank">
+                        <span class="chip bg-color">javascript</span>
+                    </a>
+                    
+                    <a href="/tags/JS高级程序设计/" target="_blank">
+                        <span class="chip bg-color">JS高级程序设计</span>
+                    </a>
+                    
+                    <a href="/tags/函数类型/" target="_blank">
+                        <span class="chip bg-color">函数类型</span>
                     </a>
                     
                 </div>
@@ -673,28 +803,32 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/02/ruan-jian-si-cang-fen-xiang/">
+                <a href="/2017/11/24/json/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/1.jpg" class="responsive-img" alt="软件私藏分享">
+                        <img src="/medias/banner/312.jpg" class="responsive-img" alt="JSON">
                         
-                        <span class="card-title">软件私藏分享</span>
+                        <span class="card-title">JSON</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            软件亲测好用分享
+                            JSON的使用方法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            三叶雨
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JSON/" class="post-category" target="_blank">
+                                    JSON
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -702,8 +836,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/软件私藏/" target="_blank">
-                        <span class="chip bg-color">软件私藏</span>
+                    <a href="/tags/JS高级程序设计/" target="_blank">
+                        <span class="chip bg-color">JS高级程序设计</span>
+                    </a>
+                    
+                    <a href="/tags/JSON/" target="_blank">
+                        <span class="chip bg-color">JSON</span>
                     </a>
                     
                 </div>
@@ -754,6 +892,99 @@
 </script>
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4 ,h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4 ,h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
     
 
 </main>

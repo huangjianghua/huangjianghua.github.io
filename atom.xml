@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://huangjianghua.github.io/"/>
-  <updated>2019-12-19T04:40:13.499Z</updated>
+  <updated>2019-12-19T07:57:22.758Z</updated>
   <id>http://huangjianghua.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://huangjianghua.github.io/2019/12/19/shou-ba-shou-jiao-ni-an-zhuang-nan-fang-cass9-x-xi-lie/"/>
     <id>http://huangjianghua.github.io/2019/12/19/shou-ba-shou-jiao-ni-an-zhuang-nan-fang-cass9-x-xi-lie/</id>
     <published>2019-12-19T02:52:06.000Z</published>
-    <updated>2019-12-19T04:40:13.499Z</updated>
+    <updated>2019-12-19T07:57:22.758Z</updated>
     
     <summary type="html">
     
@@ -164,7 +164,7 @@
       
         
         
-          &lt;h3 id=&quot;世界上最大声的噪音&quot;&gt;&lt;a href=&quot;#世界上最大声的噪音&quot; class=&quot;headerlink&quot; title=&quot;世界上最大声的噪音&quot;&gt;&lt;/a&gt;世界上最大声的噪音&lt;/h3&gt;&lt;div id=&quot;echarts9854&quot; style=&quot;width:
+          &lt;h3 id=&quot;世界上最大声的噪音&quot;&gt;&lt;a href=&quot;#世界上最大声的噪音&quot; class=&quot;headerlink&quot; title=&quot;世界上最大声的噪音&quot;&gt;&lt;/a&gt;世界上最大声的噪音&lt;/h3&gt;&lt;div id=&quot;echarts126&quot; style=&quot;width:
         
       
     
@@ -492,11 +492,41 @@
   </entry>
   
   <entry>
-    <title>事件处理程序</title>
-    <link href="http://huangjianghua.github.io/2017/11/24/shi-jian-chu-li-cheng-xu/"/>
-    <id>http://huangjianghua.github.io/2017/11/24/shi-jian-chu-li-cheng-xu/</id>
+    <title>JS函数类型</title>
+    <link href="http://huangjianghua.github.io/2017/12/19/2.js-han-shu-lei-xing/"/>
+    <id>http://huangjianghua.github.io/2017/12/19/2.js-han-shu-lei-xing/</id>
+    <published>2017-12-19T09:17:00.000Z</published>
+    <updated>2019-12-19T09:25:16.525Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;function类型&quot;&gt;&lt;a href=&quot;#function类型&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://huangjianghua.github.io/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://huangjianghua.github.io/tags/javascript/"/>
+    
+      <category term="JS高级程序设计" scheme="http://huangjianghua.github.io/tags/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="函数类型" scheme="http://huangjianghua.github.io/tags/%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS事件处理程序</title>
+    <link href="http://huangjianghua.github.io/2017/11/24/3.js-shi-jian-chu-li-cheng-xu/"/>
+    <id>http://huangjianghua.github.io/2017/11/24/3.js-shi-jian-chu-li-cheng-xu/</id>
     <published>2017-11-24T14:19:13.000Z</published>
-    <updated>2019-11-24T14:23:13.191Z</updated>
+    <updated>2019-12-19T09:27:36.923Z</updated>
     
     <summary type="html">
     
@@ -541,39 +571,9 @@
       <category term="JSON" scheme="http://huangjianghua.github.io/categories/JSON/"/>
     
     
+      <category term="JS高级程序设计" scheme="http://huangjianghua.github.io/tags/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
       <category term="JSON" scheme="http://huangjianghua.github.io/tags/JSON/"/>
-    
-      <category term="JS高级程序设计" scheme="http://huangjianghua.github.io/tags/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数组方法</title>
-    <link href="http://huangjianghua.github.io/2017/06/06/shu-zu-fang-fa/"/>
-    <id>http://huangjianghua.github.io/2017/06/06/shu-zu-fang-fa/</id>
-    <published>2017-06-06T01:06:00.000Z</published>
-    <updated>2019-09-02T12:38:48.343Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;1-栈方法&quot;&gt;&lt;a href=&quot;#1-栈方法&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="javascript" scheme="http://huangjianghua.github.io/categories/javascript/"/>
-    
-    
-      <category term="JS高级程序设计" scheme="http://huangjianghua.github.io/tags/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="javascript" scheme="http://huangjianghua.github.io/tags/javascript/"/>
-    
-      <category term="数组方法" scheme="http://huangjianghua.github.io/tags/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
